@@ -10,11 +10,10 @@ pipeline {
             }
         }
 
-       stage("Build Container") {
+stage("Build Container") {
     steps {
         sh '''
-        docker compose version
-        docker compose build
+        /usr/bin/docker compose build
         '''
     }
 }
@@ -22,11 +21,12 @@ pipeline {
 stage('Deploy Services') {
     steps {
         sh '''
-        docker compose down || true
-        docker compose up -d
-        docker ps
+        /usr/bin/docker compose down || true
+        /usr/bin/docker compose up -d
+        /usr/bin/docker ps
         '''
     }
 }
+
     }
 }
