@@ -5,7 +5,8 @@ pipeline {
         stage("Coding section") {
             steps {
                 git branch: 'main',
-                    url: 'git@github.com:Apurvbajpai2531/autoreporting-cicd-using-Jenkins-and-Containerization.git'
+                      url: 'https://github.com/Apurvbajpai2531/autoreporting-cicd-using-Jenkins-and-Containerization.git',
+    credentialsId: 'github-pat'
             }
         }
 
