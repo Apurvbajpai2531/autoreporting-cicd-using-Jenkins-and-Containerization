@@ -10,21 +10,23 @@ pipeline {
             }
         }
 
-        stage("Build Container") {
-            steps {
-                sh '''
-                docker compose build
-                '''
-            }
-        }
+       stage("Build Container") {
+    steps {
+        sh '''
+        docker compose version
+        docker compose build
+        '''
+    }
+}
 
-        stage('Deploy Services') {
-            steps {
-                sh '''
-                docker compose down || true
-                docker compose up -d
-                '''
-            }
-        }
+stage('Deploy Services') {
+    steps {
+        sh '''
+        docker compose down || true
+        docker compose up -d
+        docker ps
+        '''
+    }
+}
     }
 }
